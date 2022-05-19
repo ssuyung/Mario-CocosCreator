@@ -23,6 +23,8 @@ export default class CWorld extends cc.Component {
     @property(cc.Node)
     background: cc.Node = null;
     
+   
+    
     static G: number = 0;    
     static WalkA: number = 0; 
     
@@ -57,7 +59,7 @@ export default class CWorld extends cc.Component {
             case cc.macro.KEY.w:
             case cc.macro.KEY.up:
             case cc.macro.KEY.space:
-                this.player.playerJump();
+                this.player.playerJump("Normal");
                 break;
             case cc.macro.KEY.p:
                 // this.gameStart();

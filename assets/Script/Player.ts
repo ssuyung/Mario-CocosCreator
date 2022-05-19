@@ -11,17 +11,22 @@ const {ccclass, property} = cc._decorator;
 export default class Player extends cc.Component {
 
     @property(cc.Label)
-    label: cc.Label = null;
+    liveslabel: cc.Label = null;
 
     @property
     text: string = 'hello';
 
+    @property
+    lives: number = 3;
+
     private moveDir = 0;
     private fallDown: boolean = false;
     private playerSpeed = 300;
-    private playerJumpSpeed = 700;
+    private playerJumpSpeed = 500;
+    private playerHitJumpSpeed = 300; //jump speed after hitting enemy
     private idleFrame = null;
     private anim = null;
+    
     // LIFE-CYCLE CALLBACKS:
     onLoad () {
         console.log("check");
@@ -31,6 +36,7 @@ export default class Player extends cc.Component {
     start () {
         this.idleFrame = this.getComponent(cc.Sprite).spriteFrame;
         this.anim  = this.getComponent(cc.Animation);
+        this.liveslabel.string = this.lives.toString();
     }
     
     playerMove(moveDir: number)
@@ -38,12 +44,14 @@ export default class Player extends cc.Component {
         this.moveDir = moveDir;
         // this.node.getComponent(cc.RigidBody).linearVelocity
     }
-    playerJump(){
-        // let y_speed = this.node.getComponent(cc.RigidBody).linearVelocity.y;
-        console.log("Jump");
-        // console.log(this.node.getComponent(cc.RigidBody).linearVelocity.y);
-        if(!this.fallDown){ // Initial contact with ground will have y_speed<0
-            this.node.getComponent(cc.RigidBody).linearVelocity = cc.v2(0, this.playerJumpSpeed);
+    playerJump(type: string){
+        // console.log("Jump");
+        if(type == "Normal"){
+            if(!this.fallDown){ // Initial contact with ground will have y_speed<0
+                this.node.getComponent(cc.RigidBody).linearVelocity = cc.v2(0, this.playerJumpSpeed);
+            }
+        } else if(type == "Enemy"){
+            this.node.getComponent(cc.RigidBody).linearVelocity = cc.v2(0, this.playerHitJumpSpeed);
         }
     }
     update (dt) {
@@ -70,6 +78,8 @@ export default class Player extends cc.Component {
     }
     hurt(){
         console.log("player hurt");
+        this.lives--;
+        this.liveslabel.string = this.lives.toString();
     }
     onBeginContact(contact, other, self){
         // console.log("contact!");

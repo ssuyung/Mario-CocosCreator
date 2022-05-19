@@ -32,15 +32,14 @@ export default class NewClass extends cc.Component {
         if(other.node.name == "Player"){
             if(normal.y > 0) {
                 console.log("goomba hit from above");
-                this.die();
+                // this.die();
+                other.node.getComponent("Player").playerJump("Enemy");
+                this.node.destroy();
             }
             else{
                 console.log("Player hurt");
                 other.node.getComponent("Player").hurt();
             }
         }
-    }
-    die(){
-        console.log("goomba dead");
     }
 }

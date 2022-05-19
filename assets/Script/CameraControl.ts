@@ -11,7 +11,7 @@ const { ccclass, property } = cc._decorator;
 export default class NewClass extends cc.Component {
 
     @property(cc.Node)
-    target: cc.Node = null;
+    liveslabel: cc.Node = null;
 
     @property(cc.Node)
     map: cc.Node = null;
@@ -37,5 +37,10 @@ export default class NewClass extends cc.Component {
         target_pos.y = cc.misc.clampf(target_pos.y, 0, this.map.height/2);
         current_pos.lerp(target_pos, 0.1, current_pos);
         this.node.setPosition(current_pos);
+
+        //move lives label
+        let livePosition_x = current_pos.x + 40;
+        let livePosition_y = current_pos.y + 600;
+        this.liveslabel.setPosition(cc.v2(livePosition_x,livePosition_y));
     }
 }
