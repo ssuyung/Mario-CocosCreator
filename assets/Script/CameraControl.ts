@@ -49,6 +49,7 @@ export default class NewClass extends cc.Component {
         target_pos.x = player_pos.x - this.node.width/2;
         target_pos.y = player_pos.y - this.node.height/2;
 
+        target_pos.x = cc.misc.clampf(target_pos.x, 0, Infinity);
         target_pos.y = cc.misc.clampf(target_pos.y, 0, this.map.height);
         current_pos.lerp(target_pos, 0.1, current_pos);
         this.node.setPosition(current_pos);

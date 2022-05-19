@@ -51,6 +51,11 @@ export default class CWorld extends cc.Component {
                 this.rightDown = true;
                 this.player.playerMove(1);
                 break;
+            case cc.macro.KEY.w:
+            case cc.macro.KEY.up:
+            case cc.macro.KEY.space:
+                this.player.playerJump();
+                break;
             case cc.macro.KEY.p:
                 // this.gameStart();
                 break;

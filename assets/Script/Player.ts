@@ -17,8 +17,9 @@ export default class Player extends cc.Component {
     text: string = 'hello';
 
     private moveDir = 0;
-
-    private playerSpeed = 150;
+    private fallDown: boolean = false;
+    private playerSpeed = 300;
+    private playerJumpSpeed = 700;
     // LIFE-CYCLE CALLBACKS:
     onLoad () {
         console.log("check");
@@ -34,21 +35,19 @@ export default class Player extends cc.Component {
         this.moveDir = moveDir;
         // this.node.getComponent(cc.RigidBody).linearVelocity
     }
+    playerJump(){
+        let y_speed = this.node.getComponent(cc.RigidBody).linearVelocity.y;
+        console.log("Jump");
+        // console.log(this.node.getComponent(cc.RigidBody).linearVelocity.y);
+        if(y_speed < 1 && y_speed >=-1){ // Initial contact with ground will have y_speed<0
+            this.node.getComponent(cc.RigidBody).linearVelocity = cc.v2(0, this.playerJumpSpeed);
+        }
+    }
     update (dt) {
         this.node.x += this.playerSpeed * this.moveDir * dt;
-        this.node.scaleX = (this.moveDir >= 0) ? 1 : -1;
-        // this.node.y = (this.node.y >= this.ceilingPos) ? this.ceilingPos : this.node.y;
-        // if(this.getComponent(cc.RigidBody).linearVelocity.y != this.playerStandSpeed)
-        //     this.fallDown = true;
-        // else
-        //     this.fallDown = false;
-
-        // if(this.damageTime > 0)
-        //     this.damageTime -= dt;
-        // else
-        //     this.damageTime = 0;
-
-        // this.playerAnimation();
+        this.node.scaleX = (this.moveDir >= 0) ? 2 : -2;
+        if(this.node.getComponent(cc.RigidBody).linearVelocity.y == 0) this.fallDown = false;
+        else this.fallDown = true;
     }
     onBeginContact(contact, other, self){
         // console.log("contact!");
