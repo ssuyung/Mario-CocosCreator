@@ -20,6 +20,9 @@ export default class CWorld extends cc.Component {
     @property(Player)
     player: Player = null;
 
+    @property(cc.Node)
+    background: cc.Node = null;
+    
     static G: number = 0;    
     static WalkA: number = 0; 
     
