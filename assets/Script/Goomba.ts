@@ -34,7 +34,10 @@ export default class NewClass extends cc.Component {
                 console.log("goomba hit from above");
                 // this.die();
                 other.node.getComponent("Player").playerJump("Enemy");
-                this.node.destroy();
+                this.node.getComponent(cc.Animation).play("GoombaHit");
+                this.schedule(function(){
+                    this.node.destroy();
+                }, 0.5);
             }
             else{
                 console.log("Player hurt");
