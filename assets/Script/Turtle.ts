@@ -114,6 +114,7 @@ export default class NewClass extends cc.Component {
                 this.moveDir *= -1;
             }
             else if(other.node.name == "Player"){
+                if(normal.y <0)
                 other.node.getComponent("Player").hurt();
             }
             // else console.log(other.node.getComponent(cc.PhysicsCollider).tag)
