@@ -27,11 +27,11 @@ export default class NewClass extends cc.Component {
     // update (dt) {}
 
     onBeginContact(contact, self, other){
-        console.log("Goomba hit "+other.node.name);
+        // console.log("Goomba hit "+other.node.name);
         let normal = contact.getWorldManifold().normal;
         if(other.node.name == "Player"){
             if(normal.y > 0) {
-                console.log("goomba hit from above");
+                // console.log("goomba hit from above");
                 // this.die();
                 other.node.getComponent("Player").playerJump("Enemy");
                 this.node.getComponent(cc.Animation).play("GoombaHit");
@@ -40,7 +40,7 @@ export default class NewClass extends cc.Component {
                 }, 0.5);
             }
             else{
-                console.log("Player hurt");
+                // console.log("Player hurt");
                 other.node.getComponent("Player").hurt();
             }
         }
