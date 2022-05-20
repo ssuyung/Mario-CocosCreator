@@ -46,6 +46,6 @@ export default class NewClass extends cc.Component {
         this.liveslabel.setPosition(cc.v2(livePosition_x,livePosition_y));
 
         //make background move as 3d
-        this.background.x = current_pos.x -300 - current_pos.x*0.1;
+        this.background.x = current_pos.x -200 - current_pos.x*0.1;
     }
 }
