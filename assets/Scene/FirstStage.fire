@@ -259,6 +259,9 @@
     "player": {
       "__id__": 8
     },
+    "background": {
+      "__id__": 43
+    },
     "_id": "7e+1qw1A5NM6FWekReNyjN"
   },
   {
@@ -1622,8 +1625,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 2000.000000000002,
-      "height": 1599.9999999999986
+      "width": 2000.0000000000023,
+      "height": 1599.9999999999984
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1634,8 +1637,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -52.58100000000002,
-        146.707,
+        329.8410000000001,
+        210.44399999999996,
         0,
         0,
         0,
@@ -1702,10 +1705,10 @@
     "alignMode": 1,
     "_target": null,
     "_alignFlags": 45,
-    "_left": -572.581000000001,
-    "_right": -467.41900000000095,
-    "_top": -626.7069999999994,
-    "_bottom": -333.2929999999993,
+    "_left": -190.15900000000107,
+    "_right": -849.8410000000011,
+    "_top": -690.4439999999992,
+    "_bottom": -269.55599999999924,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
     "_isAbsLeft": true,
@@ -1725,7 +1728,7 @@
     "node": {
       "__id__": 43
     },
-    "_enabled": true,
+    "_enabled": false,
     "label": null,
     "text": "hello",
     "player": {

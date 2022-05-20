@@ -28,15 +28,16 @@ export default class NewClass extends cc.Component {
     }
 
     start () {
-        let player_pos = this.player.getPosition();
-        let current_pos = this.node.getPosition();
-        this.offset_x = player_pos.x - current_pos.x;
-        this.initial_y = current_pos.y;
+        // let player_pos = this.player.getPosition();
+        // let current_pos = this.node.getPosition();
+        // this.offset_x = player_pos.x - current_pos.x;
+        // this.initial_y = current_pos.y;
         // console.log("bg offset: "+this.offset_x+", "+this.offset_y);
     }
 
     update (dt) {
         // let player_pos = this.player.getPosition();
+        // this.node.x = player_pos.x*0.1-500;
         // let target_pos_x = player_pos.x - this.offset_x;
         // target_pos_x = cc.misc.clampf(target_pos_x, 0, Infinity);
         // console.log("target_pos: "+target_pos_x+", "+target_pos_y);

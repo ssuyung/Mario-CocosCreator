@@ -19,6 +19,8 @@ export default class NewClass extends cc.Component {
     @property(cc.Node)
     player: cc.Node = null;
 
+    @property(cc.Node)
+    background: cc.Node = null;
 
     // LIFE-CYCLE CALLBACKS:
 
@@ -42,5 +44,8 @@ export default class NewClass extends cc.Component {
         let livePosition_x = current_pos.x + 60;
         let livePosition_y = current_pos.y + 500;
         this.liveslabel.setPosition(cc.v2(livePosition_x,livePosition_y));
+
+        //make background move as 3d
+        this.background.x = current_pos.x -300 - current_pos.x*0.1;
     }
 }
