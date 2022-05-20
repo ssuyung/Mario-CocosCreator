@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Wall",
+    "_name": "Pipe copy",
     "_objFlags": 0,
     "_parent": null,
     "_children": [],
@@ -51,8 +51,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -60.839,
-        322.955,
+        2370.865,
+        249.695,
         0,
         0,
         0,
@@ -122,8 +122,8 @@
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 60,
-      "height": 200
+      "width": 50,
+      "height": 130
     },
     "_id": ""
   },

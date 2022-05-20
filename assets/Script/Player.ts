@@ -84,7 +84,12 @@ export default class Player extends cc.Component {
         this.lives--;
         this.liveslabel.string = this.lives.toString();
     }
-    onBeginContact(contact, other, self){
+    onBeginContact(contact, self, other){
         // console.log("contact!");
+        // console.log("player hit "+other.node.name);
+        if(other.node.name == "FinishLine"){
+            console.log("finish");
+            cc.director.loadScene("Menu");
+        }
     }
 }

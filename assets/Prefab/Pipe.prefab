@@ -51,8 +51,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -60.839,
-        322.955,
+        1010.242,
+        168.958,
         0,
         0,
         0,
@@ -122,8 +122,8 @@
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 60,
-      "height": 200
+      "width": 30,
+      "height": 50
     },
     "_id": ""
   },
