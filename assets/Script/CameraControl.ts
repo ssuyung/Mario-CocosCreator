@@ -39,8 +39,8 @@ export default class NewClass extends cc.Component {
         this.node.setPosition(current_pos);
 
         //move lives label
-        let livePosition_x = current_pos.x + 40;
-        let livePosition_y = current_pos.y + 600;
+        let livePosition_x = current_pos.x + 60;
+        let livePosition_y = current_pos.y + 500;
         this.liveslabel.setPosition(cc.v2(livePosition_x,livePosition_y));
     }
 }

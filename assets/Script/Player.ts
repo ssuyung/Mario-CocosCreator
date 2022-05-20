@@ -47,6 +47,7 @@ export default class Player extends cc.Component {
     playerJump(type: string){
         // console.log("Jump");
         if(type == "Normal"){
+            // console.log(this.fallDown);
             if(!this.fallDown){ // Initial contact with ground will have y_speed<0
                 this.node.getComponent(cc.RigidBody).linearVelocity = cc.v2(0, this.playerJumpSpeed);
             }
@@ -55,7 +56,9 @@ export default class Player extends cc.Component {
         }
     }
     update (dt) {
-        this.node.x += this.playerSpeed * this.moveDir * dt;
+        // this.node.x += this.playerSpeed * this.moveDir * dt;
+        let velocity = this.node.getComponent(cc.RigidBody).linearVelocity 
+        this.node.getComponent(cc.RigidBody).linearVelocity = cc.v2(this.playerSpeed*this.moveDir, velocity.y);
         this.node.scaleX = (this.moveDir >= 0) ? 2 : -2;
 
         let y_speed = this.node.getComponent(cc.RigidBody).linearVelocity.y;
