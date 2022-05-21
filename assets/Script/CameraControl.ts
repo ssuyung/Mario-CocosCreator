@@ -44,7 +44,7 @@ export default class NewClass extends cc.Component {
     }
 
     update() {
-        console.log((Date.now()-this.StartTime)/1000);
+        // console.log((Date.now()-this.StartTime)/1000);
         let player_pos = this.player.getPosition();
         let current_pos = this.node.getPosition();
         let target_pos = player_pos;

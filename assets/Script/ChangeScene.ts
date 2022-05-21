@@ -21,19 +21,15 @@ export default class NewClass extends cc.Component {
     // onLoad () {}
 
     start () {
-
+        if(this.text == "stage1")
+            this.scheduleOnce(function(){
+                cc.director.loadScene("FirstStage");
+            }, 4);
+        else if(this.text == "stage2")
+            this.scheduleOnce(function(){
+                cc.director.loadScene("SecondStage");
+            }, 4);
     }
 
     // update (dt) {}
-    onBeginContact(contact, self, other){
-        // console.log("contact!");
-        // console.log("player hit "+other.node.name);
-        if(other.node.name == "Player"){
-            // console.log("finish");
-            if(this.text == "FirstStage")
-                cc.director.loadScene("Start2");
-            else if(this.text == "SecondStage")
-                cc.director.loadScene("Menu");
-        }
-    }
 }

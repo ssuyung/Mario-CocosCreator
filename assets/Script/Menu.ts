@@ -42,7 +42,7 @@ export default class Menu extends cc.Component {
      
     
     loadGameScene(){
-        cc.director.loadScene("FirstStage");
+        cc.director.loadScene("Start1");
         // console.log("click");
     }
 
