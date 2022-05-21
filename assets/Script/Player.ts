@@ -108,21 +108,24 @@ export default class Player extends cc.Component {
             // console.log("player hurt");
             this.lives--;
             this.liveslabel.string = this.lives.toString();
-            
-            this.node.getComponent(cc.PhysicsCollider).enabled = false;
-            // console.log("player collider enabled: " + this.node.getComponent(cc.PhysicsCollider).enabled)
-            this.dead = true;
-            let handle = this;
-            let position = this.node.getPosition();
-            // console.log("scheduling reborn");
-            this.playerJump("Normal");
-            this.scheduleOnce(function(){
-                handle.dead = false;
-                // console.log("setting player position");
-                handle.node.getComponent(cc.PhysicsCollider).enabled = true;
-                handle.node.setPosition(cc.v2(position.x + 50, position.y+100));
-                console.log("reborn");
-            }, 3)
+            if(this.lives<=0){
+                cc.director.loadScene("Gameover");
+            } else {
+                this.node.getComponent(cc.PhysicsCollider).enabled = false;
+                // console.log("player collider enabled: " + this.node.getComponent(cc.PhysicsCollider).enabled)
+                this.dead = true;
+                let handle = this;
+                let position = this.node.getPosition();
+                // console.log("scheduling reborn");
+                this.playerJump("Normal");
+                this.scheduleOnce(function(){
+                    handle.dead = false;
+                    // console.log("setting player position");
+                    handle.node.getComponent(cc.PhysicsCollider).enabled = true;
+                    handle.node.setPosition(cc.v2(position.x + 50, position.y+100));
+                    console.log("reborn");
+                }, 3)
+            }
         
     }
     onBeginContact(contact, self, other){
