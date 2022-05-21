@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "47533e7a-ee92-4e62-9ee2-da609e100de3",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 2000,
+  "height": 976,
+  "platformSettings": {},
+  "subMetas": {
+    "sky-day-game-background_7814-306": {
+      "ver": "1.0.6",
+      "uuid": "bcb426d6-ca6d-471e-a678-3e309d033ff0",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "47533e7a-ee92-4e62-9ee2-da609e100de3",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 2000,
+      "height": 976,
+      "rawWidth": 2000,
+      "rawHeight": 976,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

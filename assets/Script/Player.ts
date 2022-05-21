@@ -26,6 +26,7 @@ export default class Player extends cc.Component {
     private playerHitJumpSpeed = 300; //jump speed after hitting enemy
     private idleFrame = null;
     private anim = null;
+    private dead = false;
     
     // LIFE-CYCLE CALLBACKS:
     onLoad () {
@@ -70,19 +71,37 @@ export default class Player extends cc.Component {
 
     }
     playerAnimation(){
-        if(this.moveDir == 0)
-        {
-            this.getComponent(cc.Sprite).spriteFrame = this.idleFrame;
-            this.anim.stop();
-        }    
-        else if(!this.anim.getAnimationState("Player_Move").isPlaying)
-            this.anim.play("Player_Move");
+        if(!this.dead){
+            if(this.moveDir == 0)
+            {
+                this.getComponent(cc.Sprite).spriteFrame = this.idleFrame;
+                this.anim.stop();
+            }    
+            else if(!this.anim.getAnimationState("Player_Move").isPlaying)
+                this.anim.play("Player_Move");
+        }
         
     }
     hurt(){
-        console.log("player hurt");
-        this.lives--;
-        this.liveslabel.string = this.lives.toString();
+        if(!this.dead){
+            console.log("player hurt");
+            this.lives--;
+            this.liveslabel.string = this.lives.toString();
+            // this.node.getComponent(cc.Sprite).spriteFrame = null;
+            this.node.getComponent(cc.PhysicsCollider).enabled = false;
+            this.dead = true;
+            let handle = this;
+            let position = this.node.getPosition();
+            // console.log("scheduling reborn");
+            this.playerJump("Normal");
+            this.scheduleOnce(function(){
+                handle.dead = false;
+                // console.log("setting player position");
+                handle.node.getComponent(cc.PhysicsCollider).enabled = true;
+                handle.node.setPosition(position);
+                console.log("reborn");
+            }, 3)
+        }
     }
     onBeginContact(contact, self, other){
         // console.log("contact!");
