@@ -23,6 +23,9 @@ export default class NewClass extends cc.Component {
     score: cc.Node = null;
 
     @property(cc.Node)
+    timer: cc.Node = null;
+
+    @property(cc.Node)
     map: cc.Node = null;
 
     @property(cc.Node)
@@ -31,13 +34,17 @@ export default class NewClass extends cc.Component {
     @property(cc.Node)
     background: cc.Node = null;
 
+    private StartTime:number = 0;
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
         console.log("camera loading");
+        this.StartTime = Date.now();
+        console.log(this.StartTime);
     }
 
     update() {
+        console.log((Date.now()-this.StartTime)/1000);
         let player_pos = this.player.getPosition();
         let current_pos = this.node.getPosition();
         let target_pos = player_pos;
@@ -65,6 +72,13 @@ export default class NewClass extends cc.Component {
         let scoreLabelPosition_x = current_pos.x + 60;
         let scoreLabelPosition_y = current_pos.y + 500;
         this.scorelabel.setPosition(cc.v2(scoreLabelPosition_x,scoreLabelPosition_y));
+
+        let timerPosition_x = current_pos.x + 850;
+        let timerPosition_y = current_pos.y + 600;
+        this.timer.setPosition(cc.v2(timerPosition_x,timerPosition_y));
+
+        let time = (Date.now()-this.StartTime)/1000
+        this.timer.getComponent(cc.Label).string = time.toString();
 
         
         //make background move as 3d
