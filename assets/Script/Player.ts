@@ -28,6 +28,15 @@ export default class Player extends cc.Component {
     @property(cc.Prefab)
     coin: cc.Prefab = null;
 
+    @property(cc.AudioClip)
+    jumpAudio: cc.AudioClip = null;
+
+    @property(cc.AudioClip)
+    walkAudio: cc.AudioClip = null;
+
+    @property(cc.AudioClip)
+    loseLifeAudio: cc.AudioClip = null;
+
     private moveDir = 0;
     private fallDown: boolean = false;
     private playerSpeed = 300;
@@ -36,6 +45,7 @@ export default class Player extends cc.Component {
     private idleFrame = null;
     private anim = null;
     private dead = false;
+    private lastWalkEffectTime=0;
     
     // LIFE-CYCLE CALLBACKS:
     onLoad () {
@@ -56,11 +66,13 @@ export default class Player extends cc.Component {
     
     playerMove(moveDir: number)
     {
+        
         this.moveDir = moveDir;
         // this.node.getComponent(cc.RigidBody).linearVelocity
     }
     playerJump(type: string){
         // console.log("Jump");
+        cc.audioEngine.playEffect(this.jumpAudio, false);
         if(type == "Normal"){
             // console.log(this.fallDown);
             if(!this.fallDown){ // Initial contact with ground will have y_speed<0
@@ -82,19 +94,34 @@ export default class Player extends cc.Component {
             if(y_speed < 1 && y_speed >=-1) this.fallDown = false;
             else this.fallDown = true;
 
+            if(this.moveDir!=0){
+                // console.log(this.lastWalkEffectTime);
+                if(Date.now()-this.lastWalkEffectTime > 500){
+                    console.log("check");
+                    this.lastWalkEffectTime = Date.now();
+                    cc.audioEngine.playEffect(this.walkAudio, false);
+                    this.lastWalkEffectTime = Date.now();
+                }
+                
+            }
             this.playerAnimation();
         }
 
     }
     playerAnimation(){
         if(!this.dead){
-            if(this.moveDir == 0)
-            {
-                this.getComponent(cc.Sprite).spriteFrame = this.idleFrame;
-                this.anim.stop();
-            }    
-            else if(!this.anim.getAnimationState("Player_Move").isPlaying)
-                this.anim.play("Player_Move");
+            if(this.fallDown){
+                if(!this.anim.getAnimationState("Player_Jump").isPlaying)
+                    this.anim.play("Player_Jump");
+            } else {
+                if(this.moveDir == 0)
+                {
+                    this.getComponent(cc.Sprite).spriteFrame = this.idleFrame;
+                    this.anim.stop();
+                }    
+                else if(!this.anim.getAnimationState("Player_Move").isPlaying)
+                    this.anim.play("Player_Move");
+            }
         }
         
     }
@@ -108,6 +135,7 @@ export default class Player extends cc.Component {
             // console.log("player hurt");
             this.lives--;
             this.liveslabel.string = this.lives.toString();
+            cc.audioEngine.playEffect(this.loseLifeAudio, false);
             if(this.lives<=0){
                 cc.director.loadScene("Gameover");
             } else {

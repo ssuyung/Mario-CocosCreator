@@ -18,6 +18,9 @@ export default class NewClass extends cc.Component {
 
     @property(cc.Prefab)
     coin: cc.Prefab = null;
+
+    @property(cc.AudioClip)
+    coinAudio: cc.AudioClip = null;
     // LIFE-CYCLE CALLBACKS:
 
     // onLoad () {}
@@ -36,7 +39,7 @@ export default class NewClass extends cc.Component {
         if(normal.y < 0){
             // console.log("block hit from below");
             if(other.node.name == "Player"){
-                // console.log("Player Position: "+ other.node.getPosition());
+                cc.audioEngine.playEffect(this.coinAudio, false);
                 other.node.getComponent("Player").addScore(100);
                 // console.log(other.node.getComponent("Player").score);
                 let newCoin = cc.instantiate(this.coin);

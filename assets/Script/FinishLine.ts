@@ -16,6 +16,9 @@ export default class NewClass extends cc.Component {
     @property
     text: string = 'hello';
 
+    @property(cc.AudioClip)
+    yahooAudio: cc.AudioClip = null;
+
     // LIFE-CYCLE CALLBACKS:
 
     // onLoad () {}
@@ -29,11 +32,13 @@ export default class NewClass extends cc.Component {
         // console.log("contact!");
         // console.log("player hit "+other.node.name);
         if(other.node.name == "Player"){
+            cc.audioEngine.playEffect(this.yahooAudio, false);
+
             // console.log("finish");
             if(this.text == "FirstStage")
                 cc.director.loadScene("Start2");
             else if(this.text == "SecondStage")
-                cc.director.loadScene("Menu");
+                cc.director.loadScene("GameCompleted");
         }
     }
 }

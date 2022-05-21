@@ -22,6 +22,9 @@ export default class NewClass extends cc.Component {
     @property
     xUpperBound: number = 700;
 
+    @property(cc.AudioClip)
+    hitAudio: cc.AudioClip = null;
+
     private speed:number = 150;
     private moveDir: number =1;
     // LIFE-CYCLE CALLBACKS:
@@ -49,6 +52,7 @@ export default class NewClass extends cc.Component {
             if(normal.y > 0) {
                 // console.log("goomba hit from above");
                 // this.die();
+                cc.audioEngine.playEffect(this.hitAudio, false);
                 other.node.getComponent("Player").playerJump("Enemy");
                 other.node.getComponent("Player").addScore(200);
                 this.node.getComponent(cc.Animation).play("GoombaHit");

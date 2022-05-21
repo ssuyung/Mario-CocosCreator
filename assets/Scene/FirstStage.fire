@@ -3001,6 +3001,9 @@
     "_enabled": true,
     "label": null,
     "text": "FirstStage",
+    "yahooAudio": {
+      "__uuid__": "f4084575-70ac-49b5-a3fb-8498481b496a"
+    },
     "_id": "5cCPD59lxCkIVGh24QqxWc"
   },
   {
@@ -3519,6 +3522,9 @@
     "text": "hello",
     "xLowerBound": 1650,
     "xUpperBound": 1780,
+    "hitAudio": {
+      "__uuid__": "59380959-353d-4e7c-9fa0-b8b1663e1ee2"
+    },
     "_id": "f2cSW0F9BPeYDIYAW9eRd8"
   },
   {
@@ -3859,6 +3865,15 @@
     },
     "score": 0,
     "coin": null,
+    "jumpAudio": {
+      "__uuid__": "401ce58e-96a6-4628-94d1-9e5c3c6a3036"
+    },
+    "walkAudio": {
+      "__uuid__": "e98c2389-8779-4117-9850-48a675fa3c61"
+    },
+    "loseLifeAudio": {
+      "__uuid__": "a99ef611-4e44-46e3-a048-8fa5775ec613"
+    },
     "_id": "f42hBIVP9F4KhiYIKoBHFk"
   },
   {
@@ -4102,6 +4117,9 @@
     "_clips": [
       {
         "__uuid__": "fc357320-6671-48f8-8a72-52003c5864f7"
+      },
+      {
+        "__uuid__": "a0033213-f23c-4415-806f-f3e5386d5f90"
       }
     ],
     "playOnLoad": false,

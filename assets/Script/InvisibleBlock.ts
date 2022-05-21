@@ -19,6 +19,9 @@ export default class NewClass extends cc.Component {
     @property(cc.SpriteFrame)
     spriteFrame: cc.SpriteFrame = null;
 
+    @property(cc.AudioClip)
+    blockAudio: cc.AudioClip = null;
+
     private state = "Invisible";
     private sprite = null;
     // LIFE-CYCLE CALLBACKS:
@@ -34,6 +37,7 @@ export default class NewClass extends cc.Component {
         let normal = contact.getWorldManifold().normal;
         if(this.state == "Invisible"){
             if(normal.y < 0){
+                cc.audioEngine.playEffect(this.blockAudio, false);
                 console.log("block hit from below");
                 if(other.node.name == "Player"){
 
