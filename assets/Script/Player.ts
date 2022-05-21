@@ -19,6 +19,12 @@ export default class Player extends cc.Component {
     @property
     lives: number = 3;
 
+    @property
+    score: number = 0;
+
+    @property(cc.Prefab)
+    coin: cc.Prefab = null;
+
     private moveDir = 0;
     private fallDown: boolean = false;
     private playerSpeed = 300;
@@ -30,7 +36,7 @@ export default class Player extends cc.Component {
     
     // LIFE-CYCLE CALLBACKS:
     onLoad () {
-        console.log("check");
+        // console.log("check");
         
     }
       
@@ -38,6 +44,11 @@ export default class Player extends cc.Component {
         this.idleFrame = this.getComponent(cc.Sprite).spriteFrame;
         this.anim  = this.getComponent(cc.Animation);
         this.liveslabel.string = this.lives.toString();
+
+        // let newCoin = cc.instantiate(this.coin);
+        // let current_pos = this.node.getPosition();
+        // this.node.addChild(newCoin);
+        // newCoin.setPosition(current_pos);
     }
     
     playerMove(moveDir: number)
@@ -85,14 +96,14 @@ export default class Player extends cc.Component {
         
     }
     hurt(){
-        console.log(this.dead);
+        // console.log(this.dead);
         
-            console.log("player hurt");
+            // console.log("player hurt");
             this.lives--;
             this.liveslabel.string = this.lives.toString();
             
             this.node.getComponent(cc.PhysicsCollider).enabled = false;
-            console.log("player collider enabled: " + this.node.getComponent(cc.PhysicsCollider).enabled)
+            // console.log("player collider enabled: " + this.node.getComponent(cc.PhysicsCollider).enabled)
             this.dead = true;
             let handle = this;
             let position = this.node.getPosition();
@@ -111,7 +122,7 @@ export default class Player extends cc.Component {
         // console.log("contact!");
         // console.log("player hit "+other.node.name);
         if(other.node.name == "FinishLine"){
-            console.log("finish");
+            // console.log("finish");
             cc.director.loadScene("Menu");
         }
     }

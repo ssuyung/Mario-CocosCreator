@@ -71,7 +71,7 @@ export default class NewClass extends cc.Component {
         if(this.state == "Normal"){
             if(other.node.name == "Player"){
                 if(normal.y > 0) {
-                    console.log("Turtle hit from above");
+                    // console.log("Turtle hit from above");
                     other.node.getComponent("Player").playerJump("Enemy");
                     this.anim.play("TurtleHit");
                     this.state = "Shell";
@@ -108,7 +108,7 @@ export default class NewClass extends cc.Component {
             
         } else if(this.state == "ShellMoving"){
             if(other.node.getComponent(cc.PhysicsCollider).tag == 0){
-                console.log("Hit enemy");
+                // console.log("Hit enemy");
                 other.node.destroy();
             } else if(other.node.getComponent(cc.PhysicsCollider).tag == 3){ //wall
                 this.moveDir *= -1;
