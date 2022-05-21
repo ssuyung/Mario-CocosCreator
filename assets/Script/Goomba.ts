@@ -16,6 +16,14 @@ export default class NewClass extends cc.Component {
     @property
     text: string = 'hello';
 
+    @property
+    xLowerBound: number = 340;
+
+    @property
+    xUpperBound: number = 700;
+
+    private speed:number = 150;
+    private moveDir: number =1;
     // LIFE-CYCLE CALLBACKS:
 
     // onLoad () {}
@@ -24,7 +32,15 @@ export default class NewClass extends cc.Component {
         console.log("goomba start");
     }
 
-    // update (dt) {}
+    update (dt) {
+        console.log(this.node.getPosition());
+        let current_speed = this.node.getComponent(cc.RigidBody).linearVelocity;
+        this.node.getComponent(cc.RigidBody).linearVelocity = cc.v2(this.speed*this.moveDir, current_speed.y);
+        this.node.scaleX = (this.moveDir >= 0) ? -2 : 2;
+
+        if(this.node.x <= this.xLowerBound) this.moveDir = 1;
+        else if(this.node.x >= this.xUpperBound) this.moveDir = -1;
+    }
 
     onBeginContact(contact, self, other){
         // console.log("Goomba hit "+other.node.name);

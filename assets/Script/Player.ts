@@ -19,6 +19,9 @@ export default class Player extends cc.Component {
     @property
     lives: number = 3;
 
+    @property(cc.Label)
+    scorelabel: cc.Label = null;
+
     @property
     score: number = 0;
 
@@ -95,6 +98,10 @@ export default class Player extends cc.Component {
         }
         
     }
+    addScore(number:number){
+        this.score += number;
+        this.scorelabel.string = this.score.toString();
+    }
     hurt(){
         // console.log(this.dead);
         
@@ -121,9 +128,9 @@ export default class Player extends cc.Component {
     onBeginContact(contact, self, other){
         // console.log("contact!");
         // console.log("player hit "+other.node.name);
-        if(other.node.name == "FinishLine"){
-            // console.log("finish");
-            cc.director.loadScene("Menu");
-        }
+        // if(other.node.name == "FinishLine"){
+        //     // console.log("finish");
+        //     cc.director.loadScene("Menu");
+        // }
     }
 }

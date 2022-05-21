@@ -40,7 +40,9 @@ export default class NewClass extends cc.Component {
     update (dt) {
         // console.log("turtle");
         if(this.state == "Normal"){
-            this.node.x += this.turtleSpeed * this.moveDir * dt;
+            // this.node.x += this.turtleSpeed * this.moveDir * dt;
+            let current_speed = this.node.getComponent(cc.RigidBody).linearVelocity
+            this.node.getComponent(cc.RigidBody).linearVelocity = cc.v2(this.turtleSpeed*this.moveDir, current_speed.y);
             this.node.scaleX = (this.moveDir >= 0) ? -2 : 2;
 
             if(this.node.x <= this.xLowerBound) this.moveDir = 1;
@@ -48,10 +50,12 @@ export default class NewClass extends cc.Component {
             
         }
         else if(this.state == "Shell"){
-
+            this.node.getComponent(cc.RigidBody).linearVelocity = cc.v2(0,0);
         }
         else if(this.state == "ShellMoving"){
-            this.node.x += this.shellSpeed* this.moveDir * dt;
+            // this.node.x += this.shellSpeed* this.moveDir * dt;
+            let current_speed = this.node.getComponent(cc.RigidBody).linearVelocity
+            this.node.getComponent(cc.RigidBody).linearVelocity = cc.v2(this.shellSpeed*this.moveDir, current_speed.y);
         }
         this.playAnimation();
     }

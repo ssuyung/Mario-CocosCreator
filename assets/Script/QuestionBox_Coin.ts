@@ -37,8 +37,8 @@ export default class NewClass extends cc.Component {
             // console.log("block hit from below");
             if(other.node.name == "Player"){
                 // console.log("Player Position: "+ other.node.getPosition());
-                other.node.getComponent("Player").score += 100;
-                console.log(other.node.getComponent("Player").score);
+                other.node.getComponent("Player").addScore(100);
+                // console.log(other.node.getComponent("Player").score);
                 let newCoin = cc.instantiate(this.coin);
                 // newCoin.parent = this.node.parent;
                 let current_pos = this.node.getPosition();

@@ -23,7 +23,8 @@ export default class CWorld extends cc.Component {
     @property(cc.Node)
     background: cc.Node = null;
     
-   
+    @property(cc.AudioClip)
+    bgm: cc.AudioClip = null;
     
     static G: number = 0;    
     static WalkA: number = 0; 
@@ -40,6 +41,7 @@ export default class CWorld extends cc.Component {
         cc.director.getPhysicsManager().enabled = true;
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
+        cc.audioEngine.playMusic(this.bgm, true);
     }
 
     onKeyDown(event)

@@ -1126,6 +1126,7 @@
     "label": null,
     "text": "hello",
     "button": null,
+    "bgm": null,
     "_id": "1cvrZPx2NHy6WhPRWuJ9J8"
   },
   {
@@ -1140,6 +1141,9 @@
     "text": "hello",
     "button": {
       "__id__": 11
+    },
+    "bgm": {
+      "__uuid__": "cd7243d5-9c6b-42bf-a343-8edc41aa75a0"
     },
     "_id": "b0PePsXwpO84cNx6R4rDMA"
   }

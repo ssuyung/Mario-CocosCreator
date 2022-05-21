@@ -19,6 +19,8 @@ export default class Menu extends cc.Component {
     @property(cc.Node)
     button: cc.Node = null;
 
+    @property(cc.AudioClip)
+    bgm: cc.AudioClip = null;
     // LIFE-CYCLE CALLBACKS:
 
     // onLoad () {}
@@ -31,7 +33,8 @@ export default class Menu extends cc.Component {
         startbtn.handler = "loadGameScene";
         // this.node.getComponent(cc.Button).clickEvents.push(startbtn);
         // this.button.getComponent(cc.Button).clickEvents.push(startbtn);
-
+        cc.audioEngine.playMusic(this.bgm, true);
+        
         // console.log(cc.find("Canvas/StartButton").getComponent(cc.Button));
         cc.find("Canvas/StartButton").getComponent(cc.Button).clickEvents.push(startbtn);
         // .clickEvents.push(startbtn);

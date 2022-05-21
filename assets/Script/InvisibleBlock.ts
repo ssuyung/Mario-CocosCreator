@@ -36,10 +36,11 @@ export default class NewClass extends cc.Component {
             if(normal.y < 0){
                 console.log("block hit from below");
                 if(other.node.name == "Player"){
-                
+
                         console.log("hit invisible");
                         this.state = "Visible";
                         this.sprite = this.node.getComponent(cc.Sprite).spriteFrame = this.spriteFrame;
+                        other.node.getComponent("Player").addScore(100);
                 }
             }else{
                 contact.disabled = true;

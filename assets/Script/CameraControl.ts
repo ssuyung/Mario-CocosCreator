@@ -14,6 +14,15 @@ export default class NewClass extends cc.Component {
     liveslabel: cc.Node = null;
 
     @property(cc.Node)
+    lives: cc.Node = null;
+
+    @property(cc.Node)
+    scorelabel: cc.Node = null;
+
+    @property(cc.Node)
+    score: cc.Node = null;
+
+    @property(cc.Node)
     map: cc.Node = null;
 
     @property(cc.Node)
@@ -41,10 +50,23 @@ export default class NewClass extends cc.Component {
         this.node.setPosition(current_pos);
 
         //move lives label
-        let livePosition_x = current_pos.x + 60;
-        let livePosition_y = current_pos.y + 500;
-        this.liveslabel.setPosition(cc.v2(livePosition_x,livePosition_y));
+        let livesPosition_x = current_pos.x + 150;
+        let livesPosition_y = current_pos.y + 550;
+        this.lives.setPosition(cc.v2(livesPosition_x,livesPosition_y));
 
+        let livesLabelPosition_x = current_pos.x + 60;
+        let livesLabelPosition_y = current_pos.y + 550;
+        this.liveslabel.setPosition(cc.v2(livesLabelPosition_x,livesLabelPosition_y));
+
+        let scorePosition_x = current_pos.x + 180;
+        let scorePosition_y = current_pos.y + 500;
+        this.score.setPosition(cc.v2(scorePosition_x,scorePosition_y));
+
+        let scoreLabelPosition_x = current_pos.x + 60;
+        let scoreLabelPosition_y = current_pos.y + 500;
+        this.scorelabel.setPosition(cc.v2(scoreLabelPosition_x,scoreLabelPosition_y));
+
+        
         //make background move as 3d
         this.background.x = current_pos.x -200 - current_pos.x*0.1;
     }
