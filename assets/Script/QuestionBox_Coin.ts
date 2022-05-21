@@ -34,7 +34,7 @@ export default class NewClass extends cc.Component {
     onBeginContact(contact, self, other){
         let normal = contact.getWorldManifold().normal;
         if(normal.y < 0){
-            console.log("block hit from below");
+            // console.log("block hit from below");
             if(other.node.name == "Player"){
                 // console.log("Player Position: "+ other.node.getPosition());
                 other.node.getComponent("Player").score += 100;
