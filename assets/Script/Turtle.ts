@@ -26,7 +26,7 @@ export default class NewClass extends cc.Component {
     private shellSpeed = 250;
     // private xLowerBound = 340;
     // private xUpperBound = 700;
-    private moveDir = 0;
+    private moveDir = 1;
     private anim = null;
     private state = "Normal";
     // LIFE-CYCLE CALLBACKS:
@@ -75,6 +75,8 @@ export default class NewClass extends cc.Component {
         if(this.state == "Normal"){
             if(other.node.name == "Player"){
                 if(normal.y > 0) {
+                    other.node.getComponent("Player").addScore(200);
+
                     // console.log("Turtle hit from above");
                     other.node.getComponent("Player").playerJump("Enemy");
                     this.anim.play("TurtleHit");
@@ -104,6 +106,7 @@ export default class NewClass extends cc.Component {
                     } else {
 
                     }
+                    other.node.getComponent("Player").addScore(200);
                 } 
                 else{
                     other.node.getComponent("Player").hurt();

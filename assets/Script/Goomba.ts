@@ -33,7 +33,7 @@ export default class NewClass extends cc.Component {
     }
 
     update (dt) {
-        console.log(this.node.getPosition());
+        // console.log(this.node.getPosition());
         let current_speed = this.node.getComponent(cc.RigidBody).linearVelocity;
         this.node.getComponent(cc.RigidBody).linearVelocity = cc.v2(this.speed*this.moveDir, current_speed.y);
         this.node.scaleX = (this.moveDir >= 0) ? -2 : 2;
@@ -50,6 +50,7 @@ export default class NewClass extends cc.Component {
                 // console.log("goomba hit from above");
                 // this.die();
                 other.node.getComponent("Player").playerJump("Enemy");
+                other.node.getComponent("Player").addScore(200);
                 this.node.getComponent(cc.Animation).play("GoombaHit");
                 this.schedule(function(){
                     this.node.destroy();

@@ -120,7 +120,7 @@ export default class Player extends cc.Component {
                 handle.dead = false;
                 // console.log("setting player position");
                 handle.node.getComponent(cc.PhysicsCollider).enabled = true;
-                handle.node.setPosition(cc.v2(position.x + 50, position.y));
+                handle.node.setPosition(cc.v2(position.x + 50, position.y+100));
                 console.log("reborn");
             }, 3)
         

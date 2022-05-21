@@ -176,6 +176,8 @@
     "_enabled": true,
     "label": null,
     "text": "hello",
+    "xLowerBound": 340,
+    "xUpperBound": 700,
     "_id": ""
   },
   {
@@ -190,14 +192,12 @@
       "__uuid__": "557bf3d8-b63a-408c-9a26-af43f277893c"
     },
     "_clips": [
-      {
-        "__uuid__": "557bf3d8-b63a-408c-9a26-af43f277893c"
-      },
+      null,
       {
         "__uuid__": "8d333b86-42f3-4652-998e-b4ed19aa8cbb"
       }
     ],
-    "playOnLoad": true,
+    "playOnLoad": false,
     "_id": ""
   },
   {
