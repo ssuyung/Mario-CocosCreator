@@ -58,16 +58,18 @@ export default class Player extends cc.Component {
     }
     update (dt) {
         // this.node.x += this.playerSpeed * this.moveDir * dt;
-        let velocity = this.node.getComponent(cc.RigidBody).linearVelocity 
-        this.node.getComponent(cc.RigidBody).linearVelocity = cc.v2(this.playerSpeed*this.moveDir, velocity.y);
-        this.node.scaleX = (this.moveDir >= 0) ? 2 : -2;
 
-        let y_speed = this.node.getComponent(cc.RigidBody).linearVelocity.y;
-        if(y_speed < 1 && y_speed >=-1) this.fallDown = false;
-        else this.fallDown = true;
+        if(!this.dead){
+            let velocity = this.node.getComponent(cc.RigidBody).linearVelocity 
+            this.node.getComponent(cc.RigidBody).linearVelocity = cc.v2(this.playerSpeed*this.moveDir, velocity.y);
+            this.node.scaleX = (this.moveDir >= 0) ? 2 : -2;
 
-        this.playerAnimation();
+            let y_speed = this.node.getComponent(cc.RigidBody).linearVelocity.y;
+            if(y_speed < 1 && y_speed >=-1) this.fallDown = false;
+            else this.fallDown = true;
 
+            this.playerAnimation();
+        }
 
     }
     playerAnimation(){
@@ -83,12 +85,14 @@ export default class Player extends cc.Component {
         
     }
     hurt(){
-        if(!this.dead){
+        console.log(this.dead);
+        
             console.log("player hurt");
             this.lives--;
             this.liveslabel.string = this.lives.toString();
-            // this.node.getComponent(cc.Sprite).spriteFrame = null;
+            
             this.node.getComponent(cc.PhysicsCollider).enabled = false;
+            console.log("player collider enabled: " + this.node.getComponent(cc.PhysicsCollider).enabled)
             this.dead = true;
             let handle = this;
             let position = this.node.getPosition();
@@ -98,10 +102,10 @@ export default class Player extends cc.Component {
                 handle.dead = false;
                 // console.log("setting player position");
                 handle.node.getComponent(cc.PhysicsCollider).enabled = true;
-                handle.node.setPosition(position);
+                handle.node.setPosition(cc.v2(position.x + 50, position.y));
                 console.log("reborn");
             }, 3)
-        }
+        
     }
     onBeginContact(contact, self, other){
         // console.log("contact!");
