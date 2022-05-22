@@ -25,15 +25,19 @@
 
 2. Player : The player has normal physics properties. They can move with arrow keys and and jump with up arrow or space. The player will die and respawn when getting hit by enemies or fall down holes on the map. The respawn location will be on the right of the death location so that the player won't fall in a dying loop when touching a stationery enemy (die -> respawn on enemy ->die)
 
-3. Enemies : 
-4. Question Blocks : [xxxx]
-5. Animations : [xxxx]
-6. Sound effects : [xxxx]
-7. UI : [xxxx]
+3. Enemies : There are two types of enemies. The first one is Goomba that moves between two coordinates. The other is Kroopa Troopa(Turtle) that will turn into a shell when killed. The shell will be running when hit from top-right or top-left.
+
+4. Question Blocks : One type of the question blocks will generate coin(score) when hit from below. The other type is invisible block that only appears when hit from below.
+
+5. Animations : There are walk and jump animation for player. Furthermore, there are animation for Goomba's death, Turtle's walk, Turtle's death, Shell's run, and questoin blocks.
+
+6. Sound effects : Three different BGMs for menu and two stages. Sound effects for player's jump, die. Additional sound effects include player's walk, question block's coin, invisible block's appearance, Goomba's death, and Mario's 'yahoo!' when finishing a stage.
+
+7. UI : Player's lives and score will show on screen and is written and read from firebase if logged in. Timer is on top right of the screen.
 
 ## Advanced Component Description : 
 
-Describe your advanced function and how to use it.
+There's an hidden ending in stage 2. The player will have to hit all invisible blocks correctly in order to get there.
 
 # Firebase page link
 
