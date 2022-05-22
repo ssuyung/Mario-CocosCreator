@@ -97,9 +97,6 @@
       },
       {
         "__id__": 35
-      },
-      {
-        "__id__": 36
       }
     ],
     "_prefab": null,
@@ -1601,21 +1598,6 @@
     "_originalWidth": 0,
     "_originalHeight": 0,
     "_id": "59Xt/c499Elqoiq92Knj7C"
-  },
-  {
-    "__type__": "a8debWYxLNMJZNof4g/6F5g",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 2
-    },
-    "_enabled": true,
-    "label": null,
-    "text": "hello",
-    "button": null,
-    "loginButton": null,
-    "bgm": null,
-    "_id": "1cvrZPx2NHy6WhPRWuJ9J8"
   },
   {
     "__type__": "a8debWYxLNMJZNof4g/6F5g",

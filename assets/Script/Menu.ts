@@ -44,7 +44,7 @@ export default class Menu extends cc.Component {
         loginbtn.target = this.node;
         loginbtn.component = "Menu";
         loginbtn.handler = "login";
-        cc.find("Canvas/LoginButton").getComponent(cc.Button).clickEvents.push(startbtn);
+        cc.find("Canvas/LoginButton").getComponent(cc.Button).clickEvents.push(loginbtn);
         
         // this.loginButton.getComponent(cc.Button).clickEvents.push(loginbtn);
         cc.audioEngine.playMusic(this.bgm, true);

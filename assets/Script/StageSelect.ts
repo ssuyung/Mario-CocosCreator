@@ -22,7 +22,7 @@ export default class NewClass extends cc.Component {
     // onLoad () {}
 
     start () {
-        console.log("stage select");
+        // console.log("stage select");
         let btn1 = new cc.Component.EventHandler();
         btn1.target = this.node;
         btn1.component = "StageSelect";
