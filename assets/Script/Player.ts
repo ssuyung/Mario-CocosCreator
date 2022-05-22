@@ -61,19 +61,25 @@ export default class Player extends cc.Component {
         if(user){
             console.log(user.email);
             console.log(user.uid);
+            let handle = this;
             firebase.database().ref('users/'+user.uid.toString()+'/'+this.text).once('value')
             .then(function(snapshot){
                 if(snapshot.val()){
                     console.log(snapshot.val().lives);
                     console.log(snapshot.val().score);
-                    this.score = snapshot.val().score;
-                    this.lives = snapshot.val().lives;
+                    handle.score = snapshot.val().score;
+                    handle.lives = snapshot.val().lives;
+                    // update labels
+                    handle.scorelabel.string = handle.score.toString();
+                    handle.liveslabel.string = handle.lives.toString();
                 }
                 // else console.log("no data");
             });
         } else {
             console.log("not logged in");
         }
+        console.log(this.lives);
+        console.log(this.score);
 
         // let newCoin = cc.instantiate(this.coin);
         // let current_pos = this.node.getPosition();
