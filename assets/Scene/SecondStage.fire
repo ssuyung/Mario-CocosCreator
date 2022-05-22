@@ -1710,7 +1710,7 @@
     },
     "_enabled": true,
     "label": null,
-    "text": "SecondStage",
+    "text": "stage2",
     "yahooAudio": {
       "__uuid__": "f4084575-70ac-49b5-a3fb-8498481b496a"
     },
@@ -6758,7 +6758,7 @@
     "liveslabel": {
       "__id__": 9
     },
-    "text": "hello",
+    "text": "stage2",
     "lives": 3,
     "scorelabel": {
       "__id__": 13

@@ -34,10 +34,19 @@ export default class NewClass extends cc.Component {
         if(other.node.name == "Player"){
             cc.audioEngine.playEffect(this.yahooAudio, false);
 
+            let user = firebase.auth().currentUser;
+            if(user){
+                let data = other.node.getComponent("Player");
+                firebase.database().ref('users/'+user.uid.toString()+'/'+this.text)
+                .set({
+                    score: data.score,
+                    lives: data.lives,
+                });
+            }
             // console.log("finish");
-            if(this.text == "FirstStage")
+            if(this.text == "stage1")
                 cc.director.loadScene("Start2");
-            else if(this.text == "SecondStage")
+            else if(this.text == "stage2")
                 cc.director.loadScene("GameCompleted");
         }
     }

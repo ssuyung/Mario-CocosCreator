@@ -64,7 +64,10 @@ export default class Player extends cc.Component {
             firebase.database().ref('users/'+user.uid.toString()+'/'+this.text).once('value')
             .then(function(snapshot){
                 if(snapshot.val()){
-                    console.log(snapshot.val());
+                    console.log(snapshot.val().lives);
+                    console.log(snapshot.val().score);
+                    this.score = snapshot.val().score;
+                    this.lives = snapshot.val().lives;
                 }
                 // else console.log("no data");
             });
