@@ -57,6 +57,20 @@ export default class Player extends cc.Component {
         this.idleFrame = this.getComponent(cc.Sprite).spriteFrame;
         this.anim  = this.getComponent(cc.Animation);
         this.liveslabel.string = this.lives.toString();
+        let user = firebase.auth().currentUser
+        if(user){
+            console.log(user.email);
+            console.log(user.uid);
+            firebase.database().ref('users/'+user.uid.toString()+'/'+this.text).once('value')
+            .then(function(snapshot){
+                if(snapshot.val()){
+                    console.log(snapshot.val());
+                }
+                // else console.log("no data");
+            });
+        } else {
+            console.log("not logged in");
+        }
 
         // let newCoin = cc.instantiate(this.coin);
         // let current_pos = this.node.getPosition();
@@ -97,7 +111,7 @@ export default class Player extends cc.Component {
             if(this.moveDir!=0){
                 // console.log(this.lastWalkEffectTime);
                 if(Date.now()-this.lastWalkEffectTime > 500){
-                    console.log("check");
+                    // console.log("check");
                     this.lastWalkEffectTime = Date.now();
                     cc.audioEngine.playEffect(this.walkAudio, false);
                     this.lastWalkEffectTime = Date.now();
